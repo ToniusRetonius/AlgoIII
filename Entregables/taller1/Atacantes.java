@@ -1,33 +1,37 @@
 package taller1;
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Atacantes {
     
     public static void main(String[] lineas){
-        /* Especifica la ruta del archivo */
-        String rutaArchivo = "test.txt";
         
         /* como a priori la primer línea es la # casos... */
         String primeraLinea = "";
         int cant_equipos;
         int caso;
         Equipo[] equipos;
-
+        
         try {
-            /* el objeto FileReader en Java se usa para leer caracteres de un archivo de texto  */
-            /* este objeto es el que crea un flujo de lectura */
-            /* el tema es que este objeto sólo realiza la lectura y no la guarda temporalmente en ningún lado */
-            FileReader fileReader = new FileReader(rutaArchivo);
-
+            /* Especifica la ruta del archivo */
+            File file = new File("C:\\Users\\Toto\\Desktop\\Cs Computación\\Algoritmos III\\Entregables\\taller1\\test.txt");
+            
+            /* cosas sacadas de stackOverflow */
+            FileInputStream ft = new FileInputStream(file);
+            DataInputStream in = new DataInputStream(ft);
+            
             /* el objeto BufferedReader es el encargado de hacer una lectura de un flujo de lectura (puede hacerlo por líneas enteras) */
             /* es capaz de guardar esa información, pero necesita de un objeto que obtenga el flujo de lectura  */
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
             /* primer línea la paso a int */
             /* la variable caso será el nro de equipo */
-            primeraLinea = bufferedReader.readLine();
+            primeraLinea = br.readLine();
             cant_equipos = Integer.parseInt(primeraLinea);
             caso = Integer.parseInt(primeraLinea);
 
@@ -42,7 +46,7 @@ public class Atacantes {
                 
                 for (int j = 0; j < 10; j++) {
                     /* con .split( condición de split) separamos el nombre de las skills */
-                    String[] datosJugador = bufferedReader.readLine().split(" "); 
+                    String[] datosJugador = br.readLine().split(" "); 
                     
                     /* datos a capturar */
                     String nombre = datosJugador[0];
@@ -57,20 +61,39 @@ public class Atacantes {
 
                     /* si ya está lleno el equipo, cambia de caso == nro */
                     if (j == 9) {
-                        caso++;
+                        equipos[i].formacion();
+                        String[] atack = equipos[i].ataque();
+                        String[] defence = equipos[i].defensa();
+
+                        /* imprimimos los chaboncitos */
+                        System.out.println("caso nro: " + caso );
+                        System.out.print("(");
+                        for (int k = 0; k < atack.length; k++) {
+                            System.out.print(atack[k]);
+                            if (k != atack.length - 1) {
+                                System.out.print(",");
+                            }
+                        }
+                        System.out.print(")\n");
+                        System.out.print("(");
+                        for (int m = 0; m < defence.length; m++) {
+                            System.out.print(defence[m]);
+                            if (m != defence.length - 1) {
+                                System.out.print(",");
+                            }
+                        }
+                        System.out.print(") \n");
+                        caso--;
                     }
                 }
-                equipos[i].imprimirJugadores();
+                
             }
 
 
             /* se usa .close() para asegurarse que sólo cargamos el paquete de datos del buffer que nos interesaba */
-            bufferedReader.close();
-        
-        } catch (IOException e) {
-            // Maneja la excepción si ocurre un error de lectura
-            System.out.println("Ocurrió un error al leer el archivo: " + e.getMessage());
-            e.printStackTrace();
+            br.close();
+        } catch (IOException e){
+            System.err.println("Error!" + e.getMessage());
         }
     }
 

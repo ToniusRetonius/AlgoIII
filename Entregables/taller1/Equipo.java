@@ -20,15 +20,44 @@ public class Equipo{
     public int getNumero(){
         return this.numero;
     }
-    public void imprimirJugadores() {
-        System.out.println("Equipo " + this.numero + ":");
-        for (Jugador jugador : jugadores) {
-            if (jugador != null) {
-                System.out.println(jugador.getNombre() + " - Ataque: " + jugador.getAtaque() + ", Defensa: " + jugador.getDefensa());
-            }
+
+    public void formacion(){
+        if (jugadores.length != 10) {
+            return;
         }
-        System.out.println("-----------------------------------");
+        
+        for (int i = 1; i < jugadores.length; i++) {
+            Jugador key = jugadores[i];
+            int j = i - 1;
+            /* ordeno ataque */
+            while (j >= 0 && jugadores[j].getAtaque() < key.getAtaque()) {
+                jugadores[j + 1] = jugadores[j];
+                j = j - 1;
+            }
+            while (j >= 0 && jugadores[j].getAtaque() == key.getAtaque()) {
+                if (jugadores[j].getDefensa() < key.getDefensa()) {
+                    jugadores[j + 1] = jugadores[j];
+                    j = j - 1;
+                } else {break;}
+            }
+
+            jugadores[j + 1] = key;
+        }
     }
-    
+
+    public String[] ataque(){
+        String[] lista = new String[5];
+        for (int i = 0; i < 5; i++) {
+            lista[i] = jugadores[i].nombre;
+        }
+        return lista;
+    }
+    public String[] defensa(){
+        String[] lista = new String[5];
+        for (int i = 0; i < 5; i++) {
+            lista[i] = jugadores[i + 5].nombre;
+        }
+        return lista;
+    }
 }
 
