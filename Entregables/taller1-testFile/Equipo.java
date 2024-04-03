@@ -1,3 +1,4 @@
+
 public class Equipo{
     
     public Jugador[] jugadores;
@@ -21,8 +22,6 @@ public class Equipo{
     }
 
     public void formacion(){
-        /* un insertion sort clasico con un chichecito  */
-
         if (jugadores.length != 10) {
             return;
         }
@@ -35,32 +34,15 @@ public class Equipo{
                 jugadores[j + 1] = jugadores[j];
                 j = j - 1;
             }
-            /* aca esta el chichecito >> si son iguales, defino maximizando la defensa */
-/*             while (j >= 0 && jugadores[j].getAtaque() == key.getAtaque()) {
-                if (jugadores[j].getDefensa() > key.getDefensa()) { 
-                    jugadores[j + 1] = jugadores[j];
-                    j = j - 1;
-                } else {
-                    break;
-                }
-            } */
-            jugadores[j + 1] = key;
-        }
-        for (int i = 1; i < jugadores.length; i++) {
-            Jugador key = jugadores[i];
-            int j = i - 1;
-            /* ordeno ataque */
             while (j >= 0 && jugadores[j].getAtaque() == key.getAtaque()) {
-                if (jugadores[j].getDefensa() < key.getDefensa()) { 
+                if (jugadores[j].getDefensa() < key.getDefensa()) {
                     jugadores[j + 1] = jugadores[j];
                     j = j - 1;
-                } else {
-                    break;
-                }
+                } else {break;}
             }
+
             jugadores[j + 1] = key;
         }
-
     }
 
     public String[] ataque(){

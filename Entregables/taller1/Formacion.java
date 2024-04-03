@@ -1,37 +1,17 @@
-package taller1;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
-public class Atacantes {
-    
-    public static void main(String[] lineas){
-        
+public class Formacion {
+    public static void main(String[] args) {
         /* como a priori la primer línea es la # casos... */
         String primeraLinea = "";
         int cant_equipos;
         int caso;
         Equipo[] equipos;
-        
-        try {
-            /* Especifica la ruta del archivo */
-            File file = new File("C:\\Users\\Toto\\Desktop\\Cs Computación\\Algoritmos III\\Entregables\\taller1\\test.txt");
-            
-            /* cosas sacadas de stackOverflow */
-            FileInputStream ft = new FileInputStream(file);
-            DataInputStream in = new DataInputStream(ft);
-            
-            /* el objeto BufferedReader es el encargado de hacer una lectura de un flujo de lectura (puede hacerlo por líneas enteras) */
-            /* es capaz de guardar esa información, pero necesita de un objeto que obtenga el flujo de lectura  */
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
+        try (Scanner scanner = new Scanner(System.in)) {
             /* primer línea la paso a int */
             /* la variable caso será el nro de equipo */
-            primeraLinea = br.readLine();
+            primeraLinea = scanner.nextLine();
             cant_equipos = Integer.parseInt(primeraLinea);
             caso = Integer.parseInt(primeraLinea);
 
@@ -46,7 +26,7 @@ public class Atacantes {
                 
                 for (int j = 0; j < 10; j++) {
                     /* con .split( condición de split) separamos el nombre de las skills */
-                    String[] datosJugador = br.readLine().split(" "); 
+                    String[] datosJugador = scanner.nextLine().split(" "); 
                     
                     /* datos a capturar */
                     String nombre = datosJugador[0];
@@ -62,8 +42,8 @@ public class Atacantes {
                     /* si ya está lleno el equipo, cambia de caso == nro */
                     if (j == 9) {
                         equipos[i].formacion();
-                        String[] atack = equipos[i].ataque();
-                        String[] defence = equipos[i].defensa();
+                        String[] atack = alfabeticamente(equipos[i].ataque());
+                        String[] defence = alfabeticamente(equipos[i].defensa());
 
                         /* imprimimos los chaboncitos */
                         System.out.println("caso nro: " + caso );
@@ -88,14 +68,25 @@ public class Atacantes {
                 }
                 
             }
-
-
-            /* se usa .close() para asegurarse que sólo cargamos el paquete de datos del buffer que nos interesaba */
-            br.close();
-        } catch (IOException e){
-            System.err.println("Error!" + e.getMessage());
+        } catch (NumberFormatException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
-
+    /* sorting de nombres */
+    public static String[] alfabeticamente(String[] lista){
+        String temp;
+        for (int i = 0; i < lista.length; i++) {
+            for (int j = i + 1; j < lista.length; j++) {   
+                /* usamos compareTo() */
+                if (lista[i].compareTo(lista[j]) > 0) {
+                    temp = lista[i];
+                    lista[i] = lista[j];
+                    lista[j] = temp;
+                }
+            }
+        }
+        return lista;
+    }
 }
 
