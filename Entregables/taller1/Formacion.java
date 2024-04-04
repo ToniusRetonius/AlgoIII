@@ -4,9 +4,15 @@ public class Formacion {
     public static void main(String[] args) {
         /* como a priori la primer línea es la # casos... */
         String primeraLinea = "";
+
+        /* declaro variables útiles */
         int cant_equipos;
         int caso;
         Equipo[] equipos;
+
+        /* el objeto SCANNER nos permite leer data que ingresa desde la consola */
+        /* tiene métodos copados para analizar datos de entrada */
+        /* el objeto scanner recibe un objeto de flujo ( por dónde recibimos la data, ej teclado == System.in) */
 
         try (Scanner scanner = new Scanner(System.in)) {
             /* primer línea la paso a int */
@@ -18,7 +24,7 @@ public class Formacion {
             /* necesito guardarme los equipos en este arreglo de equipos */
             equipos = new Equipo[cant_equipos];
 
-            /* recorro el .txt y me armo los equipos */
+            /* recorro el array de equipos y me armo los equipos */
             for (int i = 0; i < cant_equipos; i++) {
 
                 /* instancia de equipo (recibe su nro = caso) */
@@ -41,7 +47,13 @@ public class Formacion {
 
                     /* si ya está lleno el equipo, cambia de caso == nro */
                     if (j == 9) {
+                        /* ordeno según skills */
                         equipos[i].formacion();
+                        for (int l = 0; l < equipos[i].jugadores.length; l++) {
+                            System.out.println(equipos[i].jugadores[l].nombre);
+                        }
+
+                        /* defino alfabéticamente quién ataca y quién defiende */
                         String[] atack = alfabeticamente(equipos[i].ataque());
                         String[] defence = alfabeticamente(equipos[i].defensa());
 
@@ -63,6 +75,7 @@ public class Formacion {
                             }
                         }
                         System.out.print(") \n");
+
                         caso--;
                     }
                 }
@@ -73,6 +86,7 @@ public class Formacion {
             e.printStackTrace();
         }
     }
+
     /* sorting de nombres */
     public static String[] alfabeticamente(String[] lista){
         String temp;

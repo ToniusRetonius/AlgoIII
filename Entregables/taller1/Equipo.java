@@ -20,48 +20,35 @@ public class Equipo{
         return this.numero;
     }
 
-    public void formacion(){
-        /* un insertion sort clasico con un chichecito  */
-
-        if (jugadores.length != 10) {
-            return;
-        }
-        
+    public void formacion() {
+        /* Insertion sort : primero ordeno descendentemente el ataque */
         for (int i = 1; i < jugadores.length; i++) {
             Jugador key = jugadores[i];
             int j = i - 1;
-            /* ordeno ataque */
+            
             while (j >= 0 && jugadores[j].getAtaque() < key.getAtaque()) {
                 jugadores[j + 1] = jugadores[j];
-                j = j - 1;
+                j--;
             }
-            /* aca esta el chichecito >> si son iguales, defino maximizando la defensa */
-/*             while (j >= 0 && jugadores[j].getAtaque() == key.getAtaque()) {
-                if (jugadores[j].getDefensa() > key.getDefensa()) { 
-                    jugadores[j + 1] = jugadores[j];
-                    j = j - 1;
-                } else {
-                    break;
-                }
-            } */
             jugadores[j + 1] = key;
         }
+        
+        /* caso que el ataque es IGUAL , ordeno ascendentemente por defensa */
         for (int i = 1; i < jugadores.length; i++) {
-            Jugador key = jugadores[i];
-            int j = i - 1;
-            /* ordeno ataque */
-            while (j >= 0 && jugadores[j].getAtaque() == key.getAtaque()) {
-                if (jugadores[j].getDefensa() < key.getDefensa()) { 
+            if (jugadores[i].getAtaque() == jugadores[i - 1].getAtaque()) {
+                Jugador key = jugadores[i];
+                int j = i - 1;
+                
+                while (j >= 0 && jugadores[j].getAtaque() == key.getAtaque() && jugadores[j].getDefensa() > key.getDefensa()) {
+                    Jugador temp = jugadores[j + 1];
                     jugadores[j + 1] = jugadores[j];
-                    j = j - 1;
-                } else {
-                    break;
+                    jugadores[j] = temp;
+                    j--;
                 }
             }
-            jugadores[j + 1] = key;
         }
-
     }
+    
 
     public String[] ataque(){
         String[] lista = new String[5];
