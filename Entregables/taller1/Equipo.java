@@ -20,34 +20,46 @@ public class Equipo{
         return this.numero;
     }
 
+    public void swap(int i, int j) {
+        Jugador tmp = jugadores[i];
+        jugadores[i] = jugadores[j];
+        jugadores[j] = tmp;
+    }
+    
     public void formacion() {
-        /* Insertion sort : primero ordeno descendentemente el ataque */
-        for (int i = 1; i < jugadores.length; i++) {
-            Jugador key = jugadores[i];
-            int j = i - 1;
-            
-            while (j >= 0 && jugadores[j].getAtaque() < key.getAtaque()) {
-                jugadores[j + 1] = jugadores[j];
-                j--;
+        for (int i = 0; i < 9; i++) {
+            for (int j = i + 1; j < 10; j++) {
+                if (jugadores[i].getAtaque() < jugadores[j].getAtaque()) {
+                    swap(i, j);
+                } else if (jugadores[i].getAtaque() == jugadores[j].getAtaque()) {
+                    if (jugadores[i].getDefensa() > jugadores[j].getDefensa()) {
+                        swap(i, j);
+                    } else if (jugadores[i].getDefensa() == jugadores[j].getDefensa()) {
+                        if (jugadores[i].nombre.compareTo(jugadores[j].nombre) > 0) {
+                            swap(i, j);
+                        }
+                    }
+                }
             }
-            jugadores[j + 1] = key;
         }
-        
-        /* caso que el ataque es IGUAL , ordeno ascendentemente por defensa */
-        for (int i = 1; i < jugadores.length; i++) {
-            if (jugadores[i].getAtaque() == jugadores[i - 1].getAtaque()) {
-                Jugador key = jugadores[i];
-                int j = i - 1;
-                
-                while (j >= 0 && jugadores[j].getAtaque() == key.getAtaque() && jugadores[j].getDefensa() > key.getDefensa()) {
-                    Jugador temp = jugadores[j + 1];
-                    jugadores[j + 1] = jugadores[j];
-                    jugadores[j] = temp;
-                    j--;
+    
+        for (int i = 0; i < 4; i++) {
+            for (int j = i + 1; j < 5; j++) {
+                if (jugadores[i].nombre.compareTo(jugadores[j].nombre) > 0) {
+                    swap(i, j);
+                }
+            }
+        }
+    
+        for (int i = 5; i < 9; i++) {
+            for (int j = i + 1; j < 10; j++) {
+                if (jugadores[i].nombre.compareTo(jugadores[j].nombre) > 0) {
+                    swap(i, j);
                 }
             }
         }
     }
+    
     
 
     public String[] ataque(){

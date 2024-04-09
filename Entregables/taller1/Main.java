@@ -1,0 +1,212 @@
+import java.util.Scanner;
+
+public class Main {
+    
+    public static void main(String[] args) {
+        /* como a priori la primer línea es la # casos... */
+        String primeraLinea = "";
+
+        /* declaro variables útiles */
+        int cant_equipos;
+        int caso;
+        Equipo[] equipos;
+
+        /* el objeto SCANNER nos permite leer data que ingresa desde la consola */
+        /* tiene métodos copados para analizar datos de entrada */
+        /* el objeto scanner recibe un objeto de flujo ( por dónde recibimos la data, ej teclado == System.in) */
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            /* primer línea la paso a int */
+            /* la variable caso será el nro de equipo */
+            primeraLinea = scanner.nextLine();
+            cant_equipos = Integer.parseInt(primeraLinea);
+            caso = 1;
+
+            /* necesito guardarme los equipos en este arreglo de equipos */
+            equipos = new Equipo[cant_equipos];
+
+            /* recorro el array de equipos y me armo los equipos */
+            for (int i = 0; i < cant_equipos; i++) {
+
+                /* instancia de equipo (recibe su nro = caso) */
+                equipos[i] = new Equipo(caso);
+                
+                for (int j = 0; j < 10; j++) {
+                    /* con .split( condición de split) separamos el nombre de las skills */
+                    String[] datosJugador = scanner.nextLine().split(" "); 
+                    
+                    /* datos a capturar */
+                    String nombre = datosJugador[0];
+                    int ataque = Integer.parseInt(datosJugador[1]);
+                    int defensa = Integer.parseInt(datosJugador[2]);
+                    
+                    /* instancia del jugador */
+                    Jugador jugador = new Jugador(nombre, ataque, defensa);
+
+                    /* una vez creado el jugador lo agrego al equipo */
+                    equipos[i].agregarJugador(jugador); 
+
+                    /* si ya está lleno el equipo, cambia de caso == nro */
+                    if (j == 9) {
+                        caso++;
+                    }
+                }                
+            }
+
+            for (int i = 0; i < equipos.length; i++) {
+                /* ordeno según skills */
+                equipos[i].formacion();
+
+                /* defino alfabéticamente quién ataca y quién defiende */
+                String[] atack = alfabeticamente(equipos[i].ataque());
+                String[] defence = alfabeticamente(equipos[i].defensa());
+
+                /* imprimimos los chaboncitos */
+                System.out.println("Case " + equipos[i].numero + ":");
+                System.out.print("(");
+                for (int k = 0; k < atack.length; k++) {
+                    System.out.print(atack[k]);
+                    if (k != atack.length - 1) {
+                        System.out.print(", ");
+                    }
+                }
+                System.out.println(")");
+                System.out.print("(");
+                for (int m = 0; m < defence.length; m++) {
+                    System.out.print(defence[m]);
+                    if (m != defence.length - 1) {
+                        System.out.print(", ");
+                    }
+                }
+                System.out.println(")");
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /* sorting de nombres */
+    public static String[] alfabeticamente(String[] lista){
+        String temp;
+        for (int i = 0; i < lista.length; i++) {
+            for (int j = i + 1; j < lista.length; j++) {   
+                /* usamos compareTo() */
+                if (lista[i].compareTo(lista[j]) > 0) {
+                    temp = lista[i];
+                    lista[i] = lista[j];
+                    lista[j] = temp;
+                }
+            }
+        }
+        return lista;
+    }
+
+    public static class Jugador{
+    
+        public String nombre;
+        public int ataque;
+        public int defensa;
+    
+        public Jugador(String nombre, int ataque, int defensa){
+            this.nombre = nombre;
+            this.ataque = ataque;
+            this.defensa = defensa;
+        }
+    
+        /* quiero poder obtener nombre : para el alfabético */
+        public String getNombre (){
+            return nombre;
+        }
+    
+        /* quiero poder obtener ataque : para el sorting    */
+        public int getAtaque(){
+            return ataque;
+        }
+    
+        /* quiero poder obtener defensa : para el desempate */
+        public int getDefensa(){
+            return defensa;
+        }
+    }
+    
+    public static class Equipo{
+    
+        public Jugador[] jugadores;
+        public int numero;
+    
+        public Equipo(int nro){
+            this.jugadores = new Jugador[10];
+            this.numero = nro;
+        }
+    
+        public void agregarJugador(Jugador jugador) {
+            for (int i = 0; i < jugadores.length; i++) {
+                if (jugadores[i] == null) { 
+                    jugadores[i] = jugador;
+                    return; 
+                }
+            }
+        }
+        public int getNumero(){
+            return this.numero;
+        }
+    
+        public void swap(int i, int j) {
+            Jugador tmp = jugadores[i];
+            jugadores[i] = jugadores[j];
+            jugadores[j] = tmp;
+        }
+        
+        public void formacion() {
+            for (int i = 0; i < 9; i++) {
+                for (int j = i + 1; j < 10; j++) {
+                    if (jugadores[i].getAtaque() < jugadores[j].getAtaque()) {
+                        swap(i, j);
+                    } else if (jugadores[i].getAtaque() == jugadores[j].getAtaque()) {
+                        if (jugadores[i].getDefensa() > jugadores[j].getDefensa()) {
+                            swap(i, j);
+                        } else if (jugadores[i].getDefensa() == jugadores[j].getDefensa()) {
+                            if (jugadores[i].nombre.compareTo(jugadores[j].nombre) > 0) {
+                                swap(i, j);
+                            }
+                        }
+                    }
+                }
+            }
+        
+            for (int i = 0; i < 4; i++) {
+                for (int j = i + 1; j < 5; j++) {
+                    if (jugadores[i].nombre.compareTo(jugadores[j].nombre) > 0) {
+                        swap(i, j);
+                    }
+                }
+            }
+        
+            for (int i = 5; i < 9; i++) {
+                for (int j = i + 1; j < 10; j++) {
+                    if (jugadores[i].nombre.compareTo(jugadores[j].nombre) > 0) {
+                        swap(i, j);
+                    }
+                }
+            }
+        }
+        
+        
+    
+        public String[] ataque(){
+            String[] lista = new String[5];
+            for (int i = 0; i < 5; i++) {
+                lista[i] = jugadores[i].nombre;
+            }
+            return lista;
+        }
+        public String[] defensa(){
+            String[] lista = new String[5];
+            for (int i = 0; i < 5; i++) {
+                lista[i] = jugadores[i + 5].nombre;
+            }
+            return lista;
+        }
+    }
+}
+
