@@ -5,6 +5,8 @@ public class SkyLine {
 
     public SkyLine(int cantidad, int caso){
         this.edificios = new Edificio[cantidad];
+        this.caso = caso;
+        
     }
 
     public void AgregarEdificio(Edificio e){
@@ -15,4 +17,6 @@ public class SkyLine {
             }
         }
     }
-}
+    /* necesito un metodo capaz de hallar un subconjunto creciente en altura que maximice el ancho de los edificios */
+    /* es decir que para subsecuencia de edificios aquellos que se encuentren creciendo en altura, sumen el ancho */
+}   

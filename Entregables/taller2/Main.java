@@ -9,21 +9,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         /* La primera línea del input es la cantidad de casos de test */
-        cantidadCasos = scanner.nextInt();
+        cantidadCasos = Integer.parseInt(scanner.nextLine());
+        System.err.println(cantidadCasos);
 
-        /* Consumir la nueva línea pendiente */
-        scanner.nextLine();
-
-        /* tenemos todos los skylines */
+        /* inicializamos el arreglo de todos los skylines */
         SkyLine[] totales = new SkyLine[cantidadCasos];
-
-        // Iteraciones sobre la cantidad de casos que tenemos (primera linea que nos pasan)
-
+        
         for (int i = 0; i < cantidadCasos; i++) {
-            /* La primera línea del input del caso es la cantidad de edificios en el skyline */
-            int cantidadEdificios = scanner.nextInt();
-
-            scanner.nextLine();
+            /* La primera línea del input del caso, es la cantidad de edificios en el skyline */
+            int cantidadEdificios = Integer.parseInt(scanner.nextLine());
             
             /* definimos las variables para capturar los datos */
             int[] alturas = new int[cantidadEdificios];
@@ -34,7 +28,6 @@ public class Main {
             totales[i] =  new SkyLine(cantidadEdificios, caso);
             
             String datos_altura_linea = scanner.nextLine();
-            System.out.println(datos_altura_linea);
             String[] datos_altura = datos_altura_linea.split(" ");
             
             String datos_ancho_linea = scanner.nextLine();
@@ -48,18 +41,19 @@ public class Main {
                 Edificio edif = new Edificio(alturas[j], anchos[j]);
                 totales[i].AgregarEdificio(edif);
             }
+
         }
-
-        /* para probar las guardas */
-
-        /*  for (int i = 0; i < totales[0].edificios.length; i++) {
-            System.out.print(totales[0].edificios[i].getAltura() + " ");
-            System.out.print(totales[0].edificios[i].getAncho());
-            System.out.print("\n");
-            }  
+        /* chequeamos que se capture bien la data >>>  */
+        /*  for (int i = 0; i < totales.length; i++) {
+            System.err.println("longitudes skylines " + totales[i].edificios.length);
+            for (int j = 0; j < totales[i].edificios.length; j++) {
+                System.err.println("altura edificio en la pos " + j + " "+ totales[i].edificios[j].getAltura());
+                System.err.println("ancho edificio en la pos " + j + " "+ totales[i].edificios[j].getAncho());
+            }
+        }
+        
+        System.err.println("Cantidad de casos " + cantidadCasos); 
         */
-    
-
         scanner.close();
     }
 }
