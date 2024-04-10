@@ -1,19 +1,7 @@
-# ej. 1
-def subset_sum(C, i, j):  
-    if j < 0:
-        return False
-    if i == 0: 
-        return j == 0
-    else: 
-        if subset_sum(C, i - 1, j):
-            return True
-        if subset_sum(C, i - 1, j - C[i - 1]):
-            print(C[i - 1])
-            return True
-        return False
+## ejercicio 1
 
+# tenemos que a partir de un conjunto, devolver un valor de verdad sobre si existe un subconjunto de este
+# tal que sume el valor k
 
-# tests
-if __name__ == "__main__":
-    C = [6, 1, 1, 13, 4, 7, 1]
-    subset_sum(C, len(C), 26)
+def suma_subconjuntos(C, k):
+    return True

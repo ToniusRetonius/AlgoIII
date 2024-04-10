@@ -1,3 +1,4 @@
+/* Aceptado por el VJudge */
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +16,7 @@ public class Main {
         /* tiene métodos copados para analizar datos de entrada */
         /* el objeto scanner recibe un objeto de flujo ( por dónde recibimos la data, ej teclado == System.in) */
 
-        try (Scanner scanner = new Scanner(System.in)) {
+        Scanner scanner = new Scanner(System.in);
             /* primer línea la paso a int */
             /* la variable caso será el nro de equipo */
             primeraLinea = scanner.nextLine();
@@ -63,26 +64,10 @@ public class Main {
 
                 /* imprimimos los chaboncitos */
                 System.out.println("Case " + equipos[i].numero + ":");
-                System.out.print("(");
-                for (int k = 0; k < atack.length; k++) {
-                    System.out.print(atack[k]);
-                    if (k != atack.length - 1) {
-                        System.out.print(", ");
-                    }
-                }
-                System.out.println(")");
-                System.out.print("(");
-                for (int m = 0; m < defence.length; m++) {
-                    System.out.print(defence[m]);
-                    if (m != defence.length - 1) {
-                        System.out.print(", ");
-                    }
-                }
-                System.out.println(")");
+                System.out.println("(" + String.join(", ", atack) + ")");
+                System.out.println("(" + String.join(", ", defence) + ")");
             }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
+        scanner.close();
     }
 
     /* sorting de nombres */
@@ -112,21 +97,7 @@ public class Main {
             this.ataque = ataque;
             this.defensa = defensa;
         }
-    
-        /* quiero poder obtener nombre : para el alfabético */
-        public String getNombre (){
-            return nombre;
-        }
-    
-        /* quiero poder obtener ataque : para el sorting    */
-        public int getAtaque(){
-            return ataque;
-        }
-    
-        /* quiero poder obtener defensa : para el desempate */
-        public int getDefensa(){
-            return defensa;
-        }
+
     }
     
     public static class Equipo{
@@ -147,10 +118,7 @@ public class Main {
                 }
             }
         }
-        public int getNumero(){
-            return this.numero;
-        }
-    
+
         public void swap(int i, int j) {
             Jugador tmp = jugadores[i];
             jugadores[i] = jugadores[j];
@@ -160,12 +128,12 @@ public class Main {
         public void formacion() {
             for (int i = 0; i < 9; i++) {
                 for (int j = i + 1; j < 10; j++) {
-                    if (jugadores[i].getAtaque() < jugadores[j].getAtaque()) {
+                    if (jugadores[i].ataque < jugadores[j].ataque) {
                         swap(i, j);
-                    } else if (jugadores[i].getAtaque() == jugadores[j].getAtaque()) {
-                        if (jugadores[i].getDefensa() > jugadores[j].getDefensa()) {
+                    } else if (jugadores[i].ataque == jugadores[j].ataque) {
+                        if (jugadores[i].defensa > jugadores[j].defensa) {
                             swap(i, j);
-                        } else if (jugadores[i].getDefensa() == jugadores[j].getDefensa()) {
+                        } else if (jugadores[i].defensa == jugadores[j].defensa) {
                             if (jugadores[i].nombre.compareTo(jugadores[j].nombre) > 0) {
                                 swap(i, j);
                             }
@@ -189,9 +157,7 @@ public class Main {
                     }
                 }
             }
-        }
-        
-        
+        } 
     
         public String[] ataque(){
             String[] lista = new String[5];
