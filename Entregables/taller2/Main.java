@@ -42,18 +42,17 @@ public class Main {
                 totales[i].AgregarEdificio(edif);
             }
 
-        }
-        /* chequeamos que se capture bien la data >>>  */
-        /*  for (int i = 0; i < totales.length; i++) {
-            System.err.println("longitudes skylines " + totales[i].edificios.length);
-            for (int j = 0; j < totales[i].edificios.length; j++) {
-                System.err.println("altura edificio en la pos " + j + " "+ totales[i].edificios[j].getAltura());
-                System.err.println("ancho edificio en la pos " + j + " "+ totales[i].edificios[j].getAncho());
-            }
+            
         }
         
-        System.err.println("Cantidad de casos " + cantidadCasos); 
-        */
         scanner.close();
+        for (int j = 0; j < totales.length; j++) {
+            
+            System.err.println(totales[j].subsecCreciente());
+        }
+        for (int j = 0; j < totales.length; j++) {
+            
+            System.err.println(totales[j].subsecDecreciente());
+        }
     }
 }
