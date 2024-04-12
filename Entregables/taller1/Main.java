@@ -141,22 +141,7 @@ public class Main {
                     }
                 }
             }
-        
-            for (int i = 0; i < 4; i++) {
-                for (int j = i + 1; j < 5; j++) {
-                    if (jugadores[i].nombre.compareTo(jugadores[j].nombre) > 0) {
-                        swap(i, j);
-                    }
-                }
-            }
-        
-            for (int i = 5; i < 9; i++) {
-                for (int j = i + 1; j < 10; j++) {
-                    if (jugadores[i].nombre.compareTo(jugadores[j].nombre) > 0) {
-                        swap(i, j);
-                    }
-                }
-            }
+    
         } 
     
         public String[] ataque(){
