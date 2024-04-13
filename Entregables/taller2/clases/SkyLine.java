@@ -75,4 +75,8 @@ public class SkyLine {
         return max;
         
     }
+
+    public boolean esCreciente(){
+        return subsecCreciente() >= subsecDecreciente();
+    }
 }   
