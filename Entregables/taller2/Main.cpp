@@ -17,7 +17,7 @@ public:
     vector<Edificio> edificios;
     int caso;
 
-    SkyLine() : caso(0) {} // Constructor predeterminado
+    SkyLine() : caso(0) {}
 
     SkyLine(int cantidad, int caso) : caso(caso) {
         edificios.reserve(cantidad);
