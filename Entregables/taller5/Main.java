@@ -1,11 +1,10 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-import java.util.Vector;
-
 /**
  * gergovia
  */
-public class gergovia {
+public class Main {
 
     public static class Casas {
 
@@ -75,8 +74,12 @@ public class gergovia {
         /* capturo el input */
         Scanner scanner = new Scanner(System.in);
         int habitantes = Integer.parseInt(scanner.nextLine());
-        /* como a priori no se la # de casos, devuelvo resultados a medida que tomo el inp */
+        
+        /* como a priori no se la # de casos  necesito ir agregando dinámicamente con */
+        List<Casas> casos = new ArrayList<>();
+        
         int caso = 0;
+        
         while (habitantes > 0) {
             String demanda_a = scanner.nextLine();
             String[] demanda_b = demanda_a.split(" ");
@@ -85,16 +88,22 @@ public class gergovia {
             for (int i = 0; i < habitantes; i++) {
                 demanda[i] = Integer.parseInt(demanda_b[i]);
             }
+
             /* capturada la data correctamente */
             Casas actual = new Casas(habitantes, demanda, caso);
 
-            /* aca hago el print de cada caso */
-            System.err.println(actual.func()); 
+            /* agrego a la lista dinámica */
+            casos.add(actual);
 
             /* actualizo habitantes a la sig linea */
             habitantes = Integer.parseInt(scanner.nextLine());
             caso++;
         }
         scanner.close();
+
+        for (int i = 0; i < casos.size(); i++) {
+            Casas actual = casos.get(i);
+            System.err.println(actual.func());
+        }
     }
 }

@@ -4,12 +4,6 @@
 
 
 
-
-
-
-
-
-
 int main()
 {
     /* capturamos la entrada */

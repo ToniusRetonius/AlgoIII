@@ -9,12 +9,14 @@ class Gergovia
 public:
     int habitantes;
     vector<int> demanda;
+    int caso;
 
     /* constructor */
-    gergovia(int h, vector<int> dem)
+    gergovia(int h, vector<int> dem, int c)
     {
         habitantes = h;
         demanda = dem;
+        caso = c;
     }
 
     /* metodo */
@@ -26,34 +28,44 @@ public:
         int actual_i = 0;
         int actual_j = 0;
 
-        while (i < habitantes)
+        while (i < demanda.size())
         {
-            if (actual_i >= 0)
+            if (actual_i <= 0)
             {
                 /* actualizo la lista original */
                 demanda[i] = actual_i;
                 /* avanzo en i */
                 i++;
                 /* redefino actual_i */
-                actual_i = demanda[i];
-            }
-            else
-            {
-                while (j < habitantes && actual_j <= 0 ) 
+                if (i < demanda.size())
                 {
-                    if (actual_j <= 0)
+                    actual_i = demanda[i];
+                
+                }
+                
+            }
+            /* si es mayor a cero actual_i y estamos en rango */
+            else if (actual_i > 0) 
+            {
+                while (j < demanda.size()) 
+                {
+                    if (actual_j >= 0)
                     {
                         /* actualizo la lista original */
                         demanda[j] = actual_j;
-                        if (actual_j == 0)
+                        j++;
+                        if (j < demanda.size())
                         {
-                            /* avanzo */
-                            j++;
                             /* redefino actual_j */
                             actual_j = demanda[j]
-                        }
-                        
-                        
+                        }                        
+                    }
+                    else{
+                        suma += abs(j - i);
+                        actual_i--;
+                        actual_j++;
+                        demanda[i] = actual_i;
+                        demanda[j] = actual_j;
                     }
                     
                 }
@@ -61,6 +73,7 @@ public:
             }
             
         }
+        return suma
         
 
     }

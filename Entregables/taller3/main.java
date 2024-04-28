@@ -47,8 +47,8 @@ public class main {
                         max = Math.max(max, morfi);
                     }
                 }
-                return max;
             }    
+            return max;
         }
     }
 
