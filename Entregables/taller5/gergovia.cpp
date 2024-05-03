@@ -1,113 +1,42 @@
 #include <iostream>
 #include <vector>
-#include <sstream>
+#include <cmath>
 
 using namespace std;
 
-class Gergovia
-{
-public:
-    int habitantes;
-    vector<int> demanda;
-    int caso;
+int main() {
+    vector<long long> resultados;
 
-    /* constructor */
-    gergovia(int h, vector<int> dem, int c)
-    {
-        habitantes = h;
-        demanda = dem;
-        caso = c;
-    }
-
-    /* metodo */
-    int caminos(){
-        int i = 0; 
-        int j = 0;
-        int suma = 0;
-
-        int actual_i = 0;
-        int actual_j = 0;
-
-        while (i < demanda.size())
-        {
-            if (actual_i <= 0)
-            {
-                /* actualizo la lista original */
-                demanda[i] = actual_i;
-                /* avanzo en i */
-                i++;
-                /* redefino actual_i */
-                if (i < demanda.size())
-                {
-                    actual_i = demanda[i];
-                
-                }
-                
-            }
-            /* si es mayor a cero actual_i y estamos en rango */
-            else if (actual_i > 0) 
-            {
-                while (j < demanda.size()) 
-                {
-                    if (actual_j >= 0)
-                    {
-                        /* actualizo la lista original */
-                        demanda[j] = actual_j;
-                        j++;
-                        if (j < demanda.size())
-                        {
-                            /* redefino actual_j */
-                            actual_j = demanda[j]
-                        }                        
-                    }
-                    else{
-                        suma += abs(j - i);
-                        actual_i--;
-                        actual_j++;
-                        demanda[i] = actual_i;
-                        demanda[j] = actual_j;
-                    }
-                    
-                }
-                
-            }
-            
-        }
-        return suma
-        
-
-    }
-};
-
-int main()
-{
-    /* capturamos data */
-    int habitantes;
-    cin >> habitantes;
-
-    while (habitantes > 0)
-    {
-        /* capturo la linea */
-        /* declaro demanda y le doy tama;o */
-        vector<int> demanda(habitantes);
-
-        for (int i = 0; i < habitantes; i++)
-        {
-            /* capturo la linea de numeritos */
-            cin >> demanda[i];
-        }
-
-        /* construyo mi clase Gergovia */
-        Gergovia gergovia(habitantes, demanda);
-
-        /* aca va el print de la funcion que resuelve el problema */
-
-        /* actualizamos habitantes */
+    while (true) {
+        int habitantes;
         cin >> habitantes;
+        
+        /* si es 0, break */
+        if (habitantes == 0)
+            break;
+        
+        vector<int> demanda(habitantes);
+        
+        /* capturo data */
+        for (int i = 0; i < habitantes; i++)
+            cin >> demanda[i];
+        
+        long long suma = 0;
+        long long demanda_acumulada = 0;
+
+        /* como la línea da 0, voy acumulando demanda y tomando valor absoluto*/
+        for (int i = 0; i < habitantes; i++) {
+            demanda_acumulada += demanda[i];
+            suma += abs(demanda_acumulada);
+        }
+        /* acumulo las sumas */
+        resultados.push_back(suma);
+    }
+
+    /*  Imprimo los resultados al final */
+    for (int i = 0; i < resultados.size(); i++) {
+        cout << resultados[i] << endl;
     }
     
     return 0;
 }
-
-
-

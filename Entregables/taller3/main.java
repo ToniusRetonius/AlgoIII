@@ -22,10 +22,10 @@ public class main {
             int max = 0;
             /* caso base */
             if (altura == 0){
-                return morfi_acumulado + this.bellotas[arbol][altura];
+                return (morfi_acumulado + this.bellotas[arbol][altura]);
             }
             
-            if (altura <= this.costo_salto) {
+            if (altura < this.costo_salto) {
                 /* el arbol es el mismo porq no puede saltar a otro */
                 /* si hay bellota, sumo las que haya */
                 /* si no hay porque es 0 eso en la matriz, no hay drama */
@@ -89,12 +89,14 @@ public class main {
                 String datos_arbol = scanner.nextLine();
                 String[] arbol = datos_arbol.split(" ");
                 
+                /* armo la matriz */
                 for (int k = 1; k < arbol.length; k++) {
                     /* puedo decidir guardarme cant total de bellotas en el arbol o no con el k = 1 */
                     int num = Integer.parseInt(arbol[k]);
                     /* a mi me interesa saber # de bellotas en la posicion i (= altura ) del arbol j */
                     bellotas[j][num - 1] = bellotas[j][num - 1] + 1;
                 }
+
             }
             /* inicializo el dataset */
             totales[i] = new dataSet(i, t, h, f, bellotas);            
@@ -107,10 +109,12 @@ public class main {
         for (int i = 0; i < totales.length; i++) {
             int max = 0;
             int res = 0;
+
             for (int j = 0; j < totales[i].arboles; j++) {
                 max = totales[i].ardillitaloca(0, j, totales[i].altura - 1);
                 res = Math.max(max, res);
             }
+            
             System.err.println(res);
         }
     }
