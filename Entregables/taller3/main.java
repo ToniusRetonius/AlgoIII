@@ -6,7 +6,8 @@ public class main {
         public int arboles;
         public int altura;
         public int costo_salto;
-        public int[][] bellotas;  
+        public int[][] bellotas;
+        public int max; 
 
         dataSet(int caso, int t, int h, int f, int[][] bellotas){
             this.caso = caso;
@@ -15,6 +16,7 @@ public class main {
             this.costo_salto = f;
             /* matriz de arboles x altura  que cont # bellota en el arbol i en la altura j*/
             this.bellotas = bellotas;
+            this.max = 0;
         }
 
         /* funcion que maximiza las bellotas recolectadas por la ardillita */
@@ -47,8 +49,19 @@ public class main {
                         max = Math.max(max, morfi);
                     }
                 }
-            }    
+            }
+            this.max = max;    
             return max;
+        }
+
+        void max(){
+            int max = 0;
+            int res = 0;
+            for (int i = 0; i < this.arboles; i++) {
+                max = this.ardillitaloca(0, i, this.altura - 1);
+                res = Math.max(max, res);
+            }
+            this.max = res;
         }
     }
 
@@ -64,11 +77,11 @@ public class main {
         System.err.println(cantidadCasos);
 
         /* para esa cantidad tengo que inicializar un array de dataSet */
-        dataSet[] totales = new dataSet[cantidadCasos];
+        int[] resultados = new int[cantidadCasos];
 
         /* cargo la info */
 
-        for (int i = 0; i < totales.length; i++) {
+        for (int i = 0; i < resultados.length; i++) {
             /* capturamos t, h, f */
             /* 3 10 2 */
             String datos_t_h_f = scanner.nextLine();
@@ -99,23 +112,17 @@ public class main {
 
             }
             /* inicializo el dataset */
-            totales[i] = new dataSet(i, t, h, f, bellotas);            
+            dataSet caso = new dataSet(i, t, h, f, bellotas);
+            caso.max();
+            resultados[i] = caso.max;
         }
 
         /* el cero gede del final */
         String cero = scanner.nextLine();
         scanner.close();   
 
-        for (int i = 0; i < totales.length; i++) {
-            int max = 0;
-            int res = 0;
-
-            for (int j = 0; j < totales[i].arboles; j++) {
-                max = totales[i].ardillitaloca(0, j, totales[i].altura - 1);
-                res = Math.max(max, res);
-            }
-            
-            System.err.println(res);
+        for (int i = 0; i < cantidadCasos; i++) {
+            System.err.println(resultados[i]);
         }
     }
 }
