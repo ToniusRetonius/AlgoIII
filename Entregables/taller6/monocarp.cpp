@@ -19,11 +19,11 @@ int main()
     /* vectores de diferencias */
     vector<int> ba;
     vector<int> ab;
-    vector<int> impares;
+    int impar_ab = 0;
+    int impar_ba = 0; 
 
     /* resultados */
-    int cambios = 0;
-    vector<tuple<int,int>> res;
+    int cambios;
 
     for (int i = 0; i < n; i++)
     {
@@ -44,28 +44,60 @@ int main()
     int tam_ab = ab.size() % 2;
     int tam_ba = ba.size() % 2;
 
-    /* caso longitudes impar */
-    if (tam_ab == 1 && tam_ba == 1)
-    {   
-        
-    }
-    
-    /* caso longitudes par */
-    if (tam_ab == 0 && tam_ba == 0)
-    {   
-        /* tomamos los valores de ab de a 2 y los ubicamos en res */
-        for (int i = 0; i < ab.size() - 1; i++)
-        {
-            res.emplace_back(ab[i], ab[i + 1]);
-        }
-
-        /* tomamos los valores de ba de a 2 y los ubicamos en res */
-        for (int i = 0; i < ba.size() - 1; i++)
-        {
-            res.emplace_back(ba[i], ba[i + 1]);
-        }
+    if (tam_ab != tam_ba)
+    {
+        cambios = -1;
     }
 
+    if (tam_ab == tam_ba)
+    {
+        if (tam_ab == 1)
+        {
+            impar_ab = ab[ab.size() - 1];
+            impar_ba = ba[ba.size() - 1];
+            ab.pop_back();
+            ba.pop_back();
+            cambios = 2;
+        }
+
+        int tam_ab = ab.size() % 2;
+        if (tam_ab == 0 && ab.size() > 0)
+        {
+            ab.insert(ab.end(), ba.begin(), ba.end());
+            if (impar_ab != 0)
+            {
+                ab.push_back(impar_ab);
+                ab.push_back(impar_ab);
+
+                ab.push_back(impar_ab);
+                ab.push_back(impar_ba);
+                impar_ab = 0;
+                impar_ba = 0;
+            }
+            cambios = ab.size() / 2 ;
+        }
+        if (impar_ab != 0)
+        {
+            ab.push_back(impar_ab);
+            ab.push_back(impar_ab);
+
+            ab.push_back(impar_ab);
+            ab.push_back(impar_ba);
+        }
+    }
+
+    if (cambios == 0 || cambios == -1)
+    {
+        cout << cambios << endl;
+    }
+    else
+    {
+        cout << cambios << endl;
+        for (int i = 0; i < ab.size() - 1; i += 2)
+        {
+            cout << ab[i] << " " << ab[i + 1]<< endl;
+        }
+    }
     return 0;
 }
 

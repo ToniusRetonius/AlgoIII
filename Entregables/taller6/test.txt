@@ -1,0 +1,32 @@
+4
+abab
+aabb
+
+12
+abababababab
+aabbaabbaabb
+
+1
+a
+b
+
+1
+a
+a
+
+8
+babbaabb
+abababaa
+
+
+output
+2
+3 3
+3 2
+
+-1
+
+3
+2 6
+1 3
+7 8
