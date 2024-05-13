@@ -24,6 +24,7 @@ int main()
 
     /* resultados */
     int cambios;
+    vector<int> res;
 
     for (int i = 0; i < n; i++)
     {
@@ -40,64 +41,58 @@ int main()
         }
     }
     
-    /* ya tenemos los vectores de diferencias */
+    /* si son des distinto tam las diferencias */
+    if (ab.size() % 2 != ba.size() % 2)
+    { 
+       cout << -1 << endl;
+       return 0;
+    }
+
+    /* si son iguales los string */
+    if (ab.size() == 0 && ba.size() == 0)
+    {   
+        return 0;
+    }
+
+    /* ya tenemos los vectores de diferencias y son no nulos */
     int tam_ab = ab.size() % 2;
     int tam_ba = ba.size() % 2;
 
-    if (tam_ab != tam_ba)
-    {
-        cambios = -1;
-    }
-
     if (tam_ab == tam_ba)
-    {
+    {   
+        /* caso vectores impares */
         if (tam_ab == 1)
         {
-            impar_ab = ab[ab.size() - 1];
-            impar_ba = ba[ba.size() - 1];
-            ab.pop_back();
-            ba.pop_back();
-            cambios = 2;
+            impar_ab = ab[0];
+            impar_ba = ba[0];
+            
+            ab.erase(ab.begin());
+            ba.erase(ba.begin());
+            
+            res.push_back(impar_ab);
+            res.push_back(impar_ab);
+            res.push_back(impar_ab);
+            res.push_back(impar_ba);
         }
 
+        /* caso vectores pares */
         int tam_ab = ab.size() % 2;
-        if (tam_ab == 0 && ab.size() > 0)
-        {
+        if (tam_ab == 0 && ab.size() > 1)
+        {   
+            /* juntamos ab con ba y... en caso de res ser != null, anexamos ab total a res */
             ab.insert(ab.end(), ba.begin(), ba.end());
-            if (impar_ab != 0)
-            {
-                ab.push_back(impar_ab);
-                ab.push_back(impar_ab);
-
-                ab.push_back(impar_ab);
-                ab.push_back(impar_ba);
-                impar_ab = 0;
-                impar_ba = 0;
-            }
-            cambios = ab.size() / 2 ;
-        }
-        if (impar_ab != 0)
-        {
-            ab.push_back(impar_ab);
-            ab.push_back(impar_ab);
-
-            ab.push_back(impar_ab);
-            ab.push_back(impar_ba);
+            res.insert(res.end(), ab.begin(), ab.end());
         }
     }
 
-    if (cambios == 0 || cambios == -1)
+
+    cambios = res.size() / 2;
+    cout << cambios << endl;
+    for (int i = 0; i < res.size() - 1; i += 2)
     {
-        cout << cambios << endl;
+        cout << res[i] << " " << res[i + 1]<< endl;
     }
-    else
-    {
-        cout << cambios << endl;
-        for (int i = 0; i < ab.size() - 1; i += 2)
-        {
-            cout << ab[i] << " " << ab[i + 1]<< endl;
-        }
-    }
+    
     return 0;
 }
 
