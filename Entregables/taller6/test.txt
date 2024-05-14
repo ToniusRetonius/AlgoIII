@@ -18,11 +18,20 @@ a
 babbaabb
 abababaa
 
+14
+ababababababaa
+aabbaabbaabbba
 
 output
 2
 3 3
 3 2
+
+4
+3 7
+11 11
+2 6
+10 11
 
 -1
 
