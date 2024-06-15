@@ -4,7 +4,6 @@
 #include <climits>
 #include <queue>
 #include <tuple>
-#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -67,9 +66,6 @@ long long costo(int a, int b){
     return costo;
 }
 
-bool compare(int a, int b){
-    return costo(0,a) <= costo(0,b);
-}
 
 void prim_m_lg_n(int n, vector<vector<pair<long long,int>>> grafo){
     priority_queue<pair<long long, pair<int, int>>> cola;
@@ -121,7 +117,6 @@ int main()
             cin >> lock;
             locks.push_back(lock);
         }
-        sort(locks.begin(),locks.end(),compare);
         // grafo pesado 
         vector<vector<pair<long long, int>>> grafo(10005);
 
