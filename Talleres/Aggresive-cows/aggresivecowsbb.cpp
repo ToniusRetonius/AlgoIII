@@ -1,8 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// esta función nos dice si para la distancia i se pueden poner las C vacas
-bool sepuede(vector<int>& slots, int distancia, int vacas){
+// la implementación anterior nos da time limit exceeded, entonces la solución es mejorar la búsqueda.
+// pasamos de la búsqueda lineal a la binaria
+
+bool existe_distancia(vector<int>& slots, int distancia, int vacas){
     int actual = slots[0];
     int i = 1;
     // actual está asignada
@@ -31,19 +33,34 @@ bool sepuede(vector<int>& slots, int distancia, int vacas){
 
 
 int cows (vector<int>& slots, int vacas){
-    int distancia = 0;
     int indice = slots.size() - 1;
-    int max_dist = slots[indice] - slots[0];
+    int dist_min = 1;
+    int dist_max = slots[indice] - slots[0];
+    int res = 0;
 
-    // vamos a chequear si se puede mantener la distancia i
-    for (int i = 1; i <= max_dist; i++)
+    // acǽ se implementa la búsqueda binaria
+    // mientras la distancia mínima sea menor a la mǽxima existente entre dos slots ... 
+    while (dist_min <= dist_max)
     {
-        // si se puede poner las vacas con distancia i ... actualizamos distancia
-        if(sepuede(slots, i, vacas)){
-            distancia = i;
-        }      
+        // distancia_media
+        int dist_media = dist_min + (dist_max - dist_min) / 2;
+
+        // chequeamos si se puede poner a las vacas en dicha distancia
+        if (existe_distancia(slots, dist_media, vacas))
+        {
+            // si se puede .. joya, tal vez se pueda un numerito mǽs
+            res = dist_media;
+            dist_min = dist_media + 1;
+        } else
+        {
+            // si no pudimos asignar las C vacas en la distancia pretendida :
+            // buscamos si se puede en alguna distancia menor
+            dist_max = dist_media - 1;
+        }
     }
-    return distancia;
+    
+
+    return res;
 }
 
 int main(){
