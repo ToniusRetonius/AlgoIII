@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 void DFS(vector<vector<int>>& lista_adyacencia, vector<bool> visitados,  int raiz){
     // defino la pila
     stack<int> pila;
