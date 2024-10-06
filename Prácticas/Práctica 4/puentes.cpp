@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// esto no funciona 
+
 int vertices = 10;
 int contador = 0;
 
