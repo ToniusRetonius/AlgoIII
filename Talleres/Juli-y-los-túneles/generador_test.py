@@ -2,10 +2,11 @@
 n = 200000
 
 # escribimos el archivo
-with open('test_fuerte.txt', 'w') as f:
+with open('test_fuerte.txt', 'w') as txt:
     # 200000 aulas
-    f.write(f"{n}\n")
+    txt.write(f"{n}\n")
 
     # un numero al lado del otro
     for i in range(1,n):
-        f.write(f"{i} ")
+        txt.write(f"{i} ")
+

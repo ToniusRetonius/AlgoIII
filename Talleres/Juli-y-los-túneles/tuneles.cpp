@@ -1,15 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int aulas;
-
-
 int main()
 {
     // capturamos aulas
+    int aulas;
     cin >> aulas;
 
-    // armamos digrafo
+    // armamos el multigrafo dirigido
     vector<vector<int>> lista_adyacencia(aulas+1);
 
     for (int i = 1; i <= aulas; i++)
@@ -17,21 +15,20 @@ int main()
         int atajo; 
         cin >> atajo;
         lista_adyacencia[i].push_back(atajo);
-        lista_adyacencia[i].push_back(i+1);
-    }
-    
 
-    // ----------- digrafo armado ----------- //
-
-    // estas son las distancias de recorrido trivial
-    vector<int> distancias;
-    for (int i = 1; i <= aulas; i++)
-    {
-        distancias[i] = i - 1;
+        if (i != aulas)
+        {
+            lista_adyacencia[i].push_back(i+1);
+            lista_adyacencia[i+1].push_back(i);
+        }
+        
     }
+
+    // inicializamos distancias indefinidas
+    vector<int> distancias(aulas+1, INT32_MAX);
 
     // la idea es BFS y comparar si encontramos una mejor
-    vector<bool> visitados(aulas, false);
+    vector<bool> visitados(aulas+1, false);
 
     // Se utiliza una cola fifo para ir pusheando los nodos a explorar
     queue<int> cola;  
@@ -42,36 +39,40 @@ int main()
     visitados[1] = true;
 
     // distancia
-    int distancia = 0;
+    distancias[1] = 0;
 
     // mientras hayan nodos por explorar ... 
-    while (!cola.empty()) {
-        // leemos y desencolamos al nodo que queremos explorar
+    while (!cola.empty())
+    {
+        //
         int actual = cola.front();
+
+        //
         cola.pop();
 
-        distancia++;
+        // para cada vecino no visitado ...
+        for (auto vecino : lista_adyacencia[actual])
+        {
+            if(!visitados[vecino])
+            {
+                // pusheamos a la cola
+                cola.push(vecino);
 
-        // explorarlo implica : mirar todos sus vecinos y pushear a la cola aquellos nodos que no teníamos agregados en la cola
-        for (int vecinos : lista_adyacencia[actual]) {
-            // si es un nodo que nunca nos apareció en la búsqueda de vecinos nuevos ... 
-            if (visitados[vecinos] == false) {
-                // lo agregamos a la cola para explorarlo luego
-                cola.push(vecinos);
-                // marcamos que a ese nodo ya lo agregamos, asi que no es novedad si nos topamos con él luego
-                visitados[vecinos] = true;
+                // marcamos visitado
+                visitados[vecino] = true;
 
-                // comparamos
-                if (distancias[vecinos] < )
-                {
-                    /* code */
-                }
-                
+                // si no se le asignó distancia ... 
+                if (distancias[vecino] == INT32_MAX) distancias[vecino] = distancias[actual] + 1;   
             }
         }
     }
-
     
+    // si todo va bien -- acá ya tenemos las mejores distancias para llegar de 1 a todos
+    for (int i = 1; i <= aulas; i++)
+    {
+        cout << distancias[i] << " ";
+    }
+    cout << endl;
     
-    
+    return 0;
 }
