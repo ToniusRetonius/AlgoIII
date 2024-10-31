@@ -76,7 +76,7 @@ int main(){
     int V = 10;
 
     // aristas
-    vector<vector<int>> aristas = {{1,2},{2,3},{3,4},{4,2}};
+    vector<vector<int>> aristas = {{1,2},{2,3},{3,4}};
 
     // inicializamos la lista de adyacencia
     vector<vector<int>> lista_adyacencias(V);

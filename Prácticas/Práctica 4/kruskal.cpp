@@ -18,12 +18,11 @@ vector<pair<long long, pair<int, int>>> agm;
 // función find para encontrar al representante de la componente conexa
 int encontrar_representante(int a)                                                       
 {
-    while(representantes[a] != a)
-    {
-        representantes[a] = representantes[representantes[a]];
-        a = representantes[a];
+    // con path compression
+    if (representantes[a] != a) {
+        representantes[a] = encontrar_representante(representantes[a]); 
     }
-    return a;
+    return representantes[a];
 }
 
 // la función union lo que hace es asignar a ambos el mismo representante de la componente
