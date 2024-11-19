@@ -24,7 +24,7 @@ Al principio estaba cebado con Excalidraw y por eso muchos son en formato png. D
 - [Práctica 4 : Recorridos y Árboles (Parte 1)](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%204/Parte%201)
 - [Práctica 4 : Recorridos y Árboles (Parte 2)](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%204/Parte%202)
 - [Práctica 5 : Recorrido Mínimo](https://github.com/ToniusRetonius/AlgoIII/blob/main/Pr%C3%A1cticas/Pr%C3%A1ctica%205/Pr%C3%A1ctica_Recorridos.pdf)
-- [Práctica 6 : Flujo Máximo en Redes](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%206)
+- [Práctica 6 : Flujo Máximo en Redes](https://github.com/ToniusRetonius/AlgoIII/blob/main/Pr%C3%A1cticas/Pr%C3%A1ctica%206/Pr%C3%A1ctica_Flujo.pdf)
 
 # Talleres
 Esta cursada constó de 3 TPs donde cada uno estaba conformado por 3 entregables corregidos por el juez.
