@@ -13,7 +13,7 @@ Al principio estaba cebado con Excalidraw y por eso muchos son en formato png. D
 - [Recorridos en árboles : BFS / DFS](https://github.com/ToniusRetonius/AlgoIII/blob/main/Res%C3%BAmenes/8%20-%20BFS-DFS.png)
 - [Puentes / Cubren](https://github.com/ToniusRetonius/AlgoIII/blob/main/Res%C3%BAmenes/10%20-%20Puentes%20y%20Cubren.png)
 - [Tipos de Demos](https://github.com/ToniusRetonius/AlgoIII/blob/main/Res%C3%BAmenes/11%20-%20Demos.png)
-- [Árbol Generador Mínimo : Kruskal / Prim](https://github.com/ToniusRetonius/AlgoIII/blob/main/Res%C3%BAmenes/12%20-%20Kruskal%20-%20Prim%20-%20Minimax.png)
+- [Árbol Generador Mínimo : Kruskal / Prim](https://github.com/ToniusRetonius/AlgoIII/blob/main/Res%C3%BAmenes/12%20-%20AGM.pdf)
 - [Recorrido Mínimo](https://github.com/ToniusRetonius/AlgoIII/blob/main/Res%C3%BAmenes/13%20-%20%20Recorrido%20M%C3%ADnimo.pdf)
 - [Flujo](https://github.com/ToniusRetonius/AlgoIII/blob/main/Res%C3%BAmenes/14%20-%20Flujo.pdf)
 
