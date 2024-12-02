@@ -40,3 +40,6 @@ Esta cursada constó de 3 TPs donde cada uno estaba conformado por 3 entregables
 - [Qué Aristas van en un AGM ? : Kruskal y Tarjan](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Aristas-en-AGM/v5-pasa.cpp)
 
 ## TP 3
+- [Desarrollo : Floyd-Warshall](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Desarrollo/res.cpp)
+- [Aulas sobrecargadas : Edmonds-Karp](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Aulas-Sobrecargadas/res.cpp)
+- [Seguridad : Dijkstra](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Seguridad/opt.cpp)
