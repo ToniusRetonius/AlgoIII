@@ -18,28 +18,28 @@ Al principio estaba cebado con Excalidraw y por eso muchos son en formato png. D
 - [Flujo](https://github.com/ToniusRetonius/AlgoIII/blob/main/Res%C3%BAmenes/14%20-%20Flujo.pdf)
 
 # Prácticas
-- [Práctica 1 : Técnicas Algorítmicas](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%201)
-- [Práctica 2 : Divide & Conquer](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%202)
-- [Práctica 3 : Introducción a la Teoría Algorítmica de Grafos](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%203)
-- [Práctica 4 : Recorridos y Árboles (Parte 1)](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%204/Parte%201)
-- [Práctica 4 : Recorridos y Árboles (Parte 2)](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%204/Parte%202)
-- [Práctica 5 : Recorrido Mínimo](https://github.com/ToniusRetonius/AlgoIII/blob/main/Pr%C3%A1cticas/Pr%C3%A1ctica%205/Pr%C3%A1ctica_Recorridos.pdf)
-- [Práctica 6 : Flujo Máximo en Redes](https://github.com/ToniusRetonius/AlgoIII/blob/main/Pr%C3%A1cticas/Pr%C3%A1ctica%206/Pr%C3%A1ctica_Flujo.pdf)
+- Práctica 1 : [ Técnicas Algorítmicas](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%201)
+- Práctica 2 : [ Divide & Conquer](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%202)
+- Práctica 3 : [ Introducción a la Teoría Algorítmica de Grafos](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%203)
+- Práctica 4 : [ Recorridos y Árboles (Parte 1)](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%204/Parte%201)
+- Práctica 4 : [ Recorridos y Árboles (Parte 2)](https://github.com/ToniusRetonius/AlgoIII/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%204/Parte%202)
+- Práctica 5 : [ Recorrido Mínimo](https://github.com/ToniusRetonius/AlgoIII/blob/main/Pr%C3%A1cticas/Pr%C3%A1ctica%205/Pr%C3%A1ctica_Recorridos.pdf)
+- Práctica 6 : [ Flujo Máximo en Redes](https://github.com/ToniusRetonius/AlgoIII/blob/main/Pr%C3%A1cticas/Pr%C3%A1ctica%206/Pr%C3%A1ctica_Flujo.pdf)
 
 # Talleres
 Esta cursada constó de 3 TPs donde cada uno estaba conformado por 3 entregables corregidos por el juez.
 
 ## TP 1 (Programación Dinámica / Greedy)
-- [Aggresive Cows : Greedy](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Aggresive-cows/aggresivecows.cpp)
-- [Black or White : Programación Dinámica](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Black-or-white/bowpd.cpp)
-- [Busy Man : Greedy](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Busy-man/busymangreedy.cpp)
+- Greedy : [Aggresive Cows](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Aggresive-cows/aggresivecows.cpp)
+-  Programación Dinámica : [ Black or White ](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Black-or-white/bowpd.cpp)
+- Greedy : [ Busy Man ](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Busy-man/busymangreedy.cpp)
 
 ## TP 2 (BFS / Kruksal y Tarjan)
-- [Igna, Martin y la Bipartitud : BFS](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Igna-Martin-y-la-bipartitud/bipartitos.cpp)
-- [Juli y los Túneles de Exactas : BFS](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Juli-y-los-t%C3%BAneles/tuneles.cpp)
-- [Qué Aristas van en un AGM ? : Kruskal y Tarjan](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Aristas-en-AGM/v5-pasa.cpp)
+- BFS : [ Igna, Martin y la Bipartitud ](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Igna-Martin-y-la-bipartitud/bipartitos.cpp)
+- BFS : [Juli y los Túneles de Exactas ](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Juli-y-los-t%C3%BAneles/tuneles.cpp)
+- Kruskal y Tarjan : [Qué Aristas van en un AGM ? ](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Aristas-en-AGM/v5-pasa.cpp)
 
 ## TP 3 (Dijkstra / Floyd-Warshall / Edmonds-Karp)
-- [Desarrollo : Floyd-Warshall](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Desarrollo/res.cpp)
-- [Aulas sobrecargadas : Edmonds-Karp](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Aulas-Sobrecargadas/res.cpp)
-- [Seguridad : Dijkstra](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Seguridad/opt.cpp)
+- Floyd-Warshall : [Desarrollo ](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Desarrollo/res.cpp)
+- Edmonds-Karp : [Aulas sobrecargadas ](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Aulas-Sobrecargadas/res.cpp)
+- Dijkstra : [Seguridad ](https://github.com/ToniusRetonius/AlgoIII/blob/main/Talleres/Seguridad/opt.cpp)
